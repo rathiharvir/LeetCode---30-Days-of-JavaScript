@@ -1,28 +1,26 @@
-# 2703. Return Length of Arguments Passed
-Write a function `argumentsLength` that returns the count of arguments passed to it.
+# 2666. Allow One Function Call
+Given a function `fn`, return a new function that is identical to the original function except that it ensures `fn` is called at most once.
 
-The **function composition** of `[f(x), g(x), h(x)]` is `fn(x) = f(g(h(x)))`.
-
-The **function composition** of an empty list of functions is the **identity function** `f(x) = x`.
-
-You may assume each function in the array accepts one integer as input and returns one integer as output.
+- The first time the returned function is called, it should return the same result as `fn`.
+- Every subsequent time it is called, it should return `undefined`.
 
 **Example 1:**
 ```
-Input: args = [5]
-Output: 1
+Input: fn = (a,b,c) => (a + b + c), calls = [[1,2,3],[2,3,6]]
+Output: [{"calls":1,"value":6}]
 Explanation:
-argumentsLength(5); // 1
-
-One value was passed to the function so it should return 1.
+const onceFn = once(fn);
+onceFn(1, 2, 3); // 6
+onceFn(2, 3, 6); // undefined, fn was not called
 ```
 
 **Example 2:**
 ```
-Input: args = [{}, null, "3"]
-Output: 3
-Explanation: 
-argumentsLength({}, null, "3"); // 3
-
-Three values were passed to the function so it should return 3.
+Input: fn = (a,b,c) => (a * b * c), calls = [[5,7,4],[2,3,6],[4,6,8]]
+Output: [{"calls":1,"value":140}]
+Explanation:
+const onceFn = once(fn);
+onceFn(5, 7, 4); // 140
+onceFn(2, 3, 6); // undefined, fn was not called
+onceFn(4, 6, 8); // undefined, fn was not called
 ```
