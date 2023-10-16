@@ -44,7 +44,7 @@ memoFactorial(3); // "call" - returns 6. However factorial was not called becaus
 // "getCallCount" - total call count: 2
 ```
 
-**Example 2:**
+**Example 3:**
 ```
 Input:
 fnName = "fib"
